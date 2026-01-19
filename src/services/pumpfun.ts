@@ -12,10 +12,8 @@ import { canvasToBlob } from '../utils/pixelArt';
  */
 
 // Pump.fun IPFS endpoint
-// In production, use direct API. In dev, Vite proxy handles CORS
-const PUMP_FUN_IPFS = import.meta.env.PROD 
-  ? 'https://pump.fun/api/ipfs'
-  : '/api/pump-fun/ipfs';
+// Always use proxy endpoint (Vite proxy in dev, Vercel serverless function in prod)
+const PUMP_FUN_IPFS = '/api/pump-fun/ipfs';
 
 // Website URL for pet pages (update this when deployed)
 const WEBSITE_URL = import.meta.env.VITE_WEBSITE_URL || 'http://localhost:5173';
