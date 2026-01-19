@@ -13,6 +13,9 @@ export default function Layout({ children }: LayoutProps) {
     return location.pathname === path;
   };
 
+  // Hide footer on pet chat page
+  const isPetPage = location.pathname.startsWith('/pet/');
+
   return (
     <div className="layout">
       <header className="header">
@@ -68,15 +71,17 @@ export default function Layout({ children }: LayoutProps) {
         {children}
       </main>
       
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-content">
-            <span className="footer-logo">PROJECT PETS</span>
-            <span className="footer-divider">—</span>
-            <span className="footer-text">RWA for Your Beloved Companions</span>
+      {!isPetPage && (
+        <footer className="footer">
+          <div className="container">
+            <div className="footer-content">
+              <span className="footer-logo">PROJECT PETS</span>
+              <span className="footer-divider">—</span>
+              <span className="footer-text">RWA for Your Beloved Companions</span>
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      )}
     </div>
   );
 }
