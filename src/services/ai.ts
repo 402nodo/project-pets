@@ -277,6 +277,24 @@ export async function generatePetResponse(
     if (!response.ok) {
       const errorText = await response.text();
       console.error('❌ Gemini API error:', response.status, errorText);
+      
+      // Handle 429 (rate limit) error specifically
+      if (response.status === 429) {
+        let errorData;
+        try {
+          errorData = JSON.parse(errorText);
+        } catch {
+          errorData = { error: { message: 'Rate limit exceeded' } };
+        }
+        
+        const retryDelay = errorData.error?.details?.find((d: any) => d['@type'] === 'type.googleapis.com/google.rpc.RetryInfo')?.retryDelay || '60';
+        const delaySeconds = parseInt(retryDelay) || 60;
+        
+        console.warn(`⚠️ Gemini API rate limit exceeded. Retry after ${delaySeconds}s. Using fallback response.`);
+        // Return fallback instead of throwing
+        return generateMockResponse(pet, userMessage);
+      }
+      
       throw new Error(`Gemini API error: ${response.status} - ${errorText}`);
     }
     

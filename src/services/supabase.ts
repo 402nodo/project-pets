@@ -108,7 +108,7 @@ export async function fetchChatMessages(petId: string): Promise<ChatMessage[]> {
       .select('messages')
       .eq('pet_id', petId)
       .eq('user_id', userId)
-      .single();
+      .maybeSingle(); // Use maybeSingle() instead of single() to avoid 406 error
 
     if (error && error.code !== 'PGRST116') { // PGRST116 = no rows returned
       console.error('Error fetching chat:', error);

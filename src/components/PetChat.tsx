@@ -13,14 +13,41 @@ export default function PetChat({ pet }: PetChatProps) {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  // Check if user is near bottom of chat
+  const checkIfNearBottom = () => {
+    if (!messagesContainerRef.current) return true;
+    const container = messagesContainerRef.current;
+    const threshold = 100; // pixels from bottom
+    return container.scrollHeight - container.scrollTop - container.clientHeight < threshold;
   };
 
+  const scrollToBottom = () => {
+    if (shouldAutoScroll && messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Handle scroll - disable auto-scroll if user scrolls up
+  const handleScroll = () => {
+    setShouldAutoScroll(checkIfNearBottom());
+  };
+
+  // Auto-scroll only when new messages arrive and user is at bottom
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    if (shouldAutoScroll) {
+      scrollToBottom();
+    }
+  }, [messages, shouldAutoScroll]);
+
+  // Re-enable auto-scroll when user sends a message
+  useEffect(() => {
+    if (input.trim() && !isTyping) {
+      setShouldAutoScroll(true);
+    }
+  }, [input, isTyping]);
 
   // Load chat messages from Supabase (personal chat)
   useEffect(() => {
@@ -163,7 +190,7 @@ export default function PetChat({ pet }: PetChatProps) {
 
   return (
     <div className="pet-chat">
-      <div className="chat-messages">
+      <div className="chat-messages" ref={messagesContainerRef} onScroll={handleScroll}>
         {messages.map((message) => (
           <div 
             key={message.id} 
