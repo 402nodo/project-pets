@@ -56,7 +56,7 @@ export default function Layout({ children }: LayoutProps) {
               LIVE
             </div>
             <a 
-              href="https://x.com" 
+              href="https://x.com/i/communities/2013297391403741336/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="x-button"
