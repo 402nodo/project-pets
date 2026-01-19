@@ -1,6 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { IncomingForm } from 'formidable';
-import { Readable } from 'stream';
 
 export const config = {
   api: {
