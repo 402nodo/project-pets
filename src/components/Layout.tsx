@@ -22,7 +22,7 @@ export default function Layout({ children }: LayoutProps) {
         <div className="header-content">
           {/* Logo */}
           <Link to="/" className="logo">
-            PROJECT PETS
+            Pets Project
           </Link>
 
           {/* Navigation Tabs */}
@@ -75,7 +75,7 @@ export default function Layout({ children }: LayoutProps) {
         <footer className="footer">
           <div className="container">
             <div className="footer-content">
-              <span className="footer-logo">PROJECT PETS</span>
+              <span className="footer-logo">Pets Project</span>
               <span className="footer-divider">—</span>
               <span className="footer-text">RWA for Your Beloved Companions</span>
             </div>

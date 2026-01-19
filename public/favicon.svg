@@ -1,13 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#fce4ec" rx="4"/>
-  <circle cx="10" cy="12" r="3" fill="#e8b4bc"/>
-  <circle cx="22" cy="12" r="3" fill="#e8b4bc"/>
-  <circle cx="16" cy="20" r="6" fill="#e8b4bc"/>
-  <circle cx="14" cy="19" r="1.5" fill="#333"/>
-  <circle cx="18" cy="19" r="1.5" fill="#333"/>
-  <ellipse cx="16" cy="22" rx="1" ry="0.5" fill="#333"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#faf9f6"/>
+  
+  <!-- Grid pattern (subtle) -->
+  <defs>
+    <pattern id="grid" width="2" height="2" patternUnits="userSpaceOnUse">
+      <path d="M 2 0 L 0 0 0 2" fill="none" stroke="#e8e6e0" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="32" height="32" fill="url(#grid)"/>
+  
+  <!-- Paw print - Main pad (heart/triangular shape) -->
+  <path d="M 16 20 L 14 24 L 18 24 Z" fill="#ff8c42" stroke="#8b4513" stroke-width="1" stroke-linejoin="round"/>
+  
+  <!-- Paw print - Toe 1 (left) -->
+  <circle cx="10" cy="12" r="3" fill="#ff8c42" stroke="#8b4513" stroke-width="1"/>
+  
+  <!-- Paw print - Toe 2 (left center) -->
+  <circle cx="14" cy="10" r="3" fill="#ff8c42" stroke="#8b4513" stroke-width="1"/>
+  
+  <!-- Paw print - Toe 3 (right center) -->
+  <circle cx="18" cy="10" r="3" fill="#ff8c42" stroke="#8b4513" stroke-width="1"/>
+  
+  <!-- Paw print - Toe 4 (right) -->
+  <circle cx="22" cy="12" r="3" fill="#ff8c42" stroke="#8b4513" stroke-width="1"/>
 </svg>
-
-
-
-
