@@ -181,6 +181,9 @@
 /* Main */
 .main {
   flex: 1;
+  overflow: hidden; /* Prevent main scroll */
+  display: flex;
+  flex-direction: column;
 }
 
 /* Footer */
