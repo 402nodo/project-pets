@@ -1,0 +1,347 @@
+.create-page {
+  padding: var(--spacing-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Progress Steps */
+.progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-bg-paper);
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.progress-step.active {
+  background: var(--color-rose);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-brutal);
+}
+
+.progress-step.completed {
+  background: var(--color-mint);
+}
+
+.step-number {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1px solid var(--color-border);
+}
+
+.progress-step.active .step-number {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+.progress-step.completed .step-number {
+  background: #2e7d32;
+  color: var(--color-bg);
+  border-color: #2e7d32;
+}
+
+.progress-step.completed .step-number::after {
+  content: '✓';
+  font-size: 0.8rem;
+}
+
+.step-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 600px) {
+  .step-label {
+    display: none;
+  }
+}
+
+.progress-line {
+  width: 60px;
+  height: 3px;
+  background: var(--color-border-light);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.progress-line.active {
+  background: var(--color-mint-dark);
+}
+
+/* Step Content */
+.step-content {
+  min-height: 400px;
+}
+
+.step-animate {
+  animation: stepFadeIn 0.4s ease-out;
+}
+
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Personality Step */
+.personality-step {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .personality-step {
+    grid-template-columns: 1fr;
+  }
+}
+
+.personality-preview {
+  position: sticky;
+  top: 100px;
+}
+
+.preview-browser {
+  overflow: hidden;
+}
+
+.preview-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  background: var(--color-bg-secondary);
+}
+
+.preview-canvas {
+  width: 200px;
+  height: 200px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  background: var(--color-bg-paper);
+  border: var(--border);
+  border-radius: var(--radius-sm);
+}
+
+/* Launch Step */
+.launch-step {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.launch-browser {
+  overflow: hidden;
+}
+
+.launch-content {
+  padding: var(--spacing-xl);
+}
+
+.launch-preview {
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+  .launch-preview {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.launch-image-wrapper {
+  flex-shrink: 0;
+}
+
+.launch-canvas {
+  width: 200px;
+  height: 200px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  background: var(--color-bg-secondary);
+  border: var(--border);
+  border-radius: var(--radius-md);
+}
+
+.launch-info {
+  flex: 1;
+}
+
+.launch-name {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.launch-bio {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.95rem;
+}
+
+.launch-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+.launch-details {
+  border-top: var(--border);
+  padding-top: var(--spacing-lg);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-sm) 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row span {
+  color: var(--color-text-secondary);
+}
+
+.detail-row strong {
+  font-weight: 700;
+}
+
+.error-message {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: #ffebee;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  color: #c62828;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Navigation */
+.step-navigation {
+  display: flex;
+  align-items: center;
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-xl);
+  border-top: var(--border);
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-spacer {
+  flex: 1;
+}
+
+.btn-launch {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--color-rose);
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1rem;
+}
+
+.btn-launch:hover {
+  background: var(--color-rose-dark);
+}
+
+.btn-launch.launching {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(0,0,0,0.1);
+  border-top-color: var(--color-text);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Confetti */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  border-radius: 2px;
+  border: 1px solid var(--color-border);
+  animation: confettiFall 3s ease-out forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti:nth-child(odd) {
+  animation-duration: 2.5s;
+}
+
+.confetti:nth-child(3n) {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.confetti:nth-child(5n) {
+  width: 6px;
+  height: 12px;
+}

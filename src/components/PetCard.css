@@ -1,0 +1,189 @@
+.pet-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-paper);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all 0.15s ease;
+  animation: cardIn 0.4s ease-out backwards;
+}
+
+.pets-grid .pet-card:nth-child(1) { animation-delay: 0.05s; }
+.pets-grid .pet-card:nth-child(2) { animation-delay: 0.1s; }
+.pets-grid .pet-card:nth-child(3) { animation-delay: 0.15s; }
+.pets-grid .pet-card:nth-child(4) { animation-delay: 0.2s; }
+.pets-grid .pet-card:nth-child(5) { animation-delay: 0.25s; }
+.pets-grid .pet-card:nth-child(6) { animation-delay: 0.3s; }
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pet-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-brutal-hover);
+  opacity: 1;
+}
+
+/* Image */
+.pet-card-image {
+  position: relative;
+  aspect-ratio: 1;
+  background: var(--color-bg-secondary);
+  border-bottom: var(--border);
+  overflow: hidden;
+}
+
+.pet-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  transition: transform 0.2s ease;
+}
+
+.pet-card:hover .pet-avatar {
+  transform: scale(1.05);
+}
+
+.pet-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-secondary);
+  font-size: 3rem;
+}
+
+.pet-card-status {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--color-bg-paper);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Content */
+.pet-card-content {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.pet-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.pet-card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pet-card-type {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+/* Stats */
+.pet-card-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pet-card-stat {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.stat-emoji {
+  font-size: 0.75rem;
+  width: 20px;
+}
+
+.pet-card-stat .progress-bar {
+  flex: 1;
+  height: 6px;
+}
+
+.stat-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  width: 24px;
+  text-align: right;
+}
+
+/* Footer */
+.pet-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.pet-card-traits {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.trait-tag {
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 2px 6px;
+  background: var(--color-lavender);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+}
+
+.token-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  background: var(--color-mint);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+/* Status colors */
+.pet-card-status.online { background: #6bcb77; }
+.pet-card-status.sleeping { background: var(--color-lavender-dark); }
+.pet-card-status.playing { background: var(--color-rose-dark); }
+.pet-card-status.eating { background: var(--color-peach-dark); }
+.pet-card-status.idle { background: #ffd93d; }
